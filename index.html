@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number App</title>
+    <style>
+        #randomNumber {
+            font-size: 2em;
+            margin: 20px;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="randomNumber">0</div>
+    <button id="toggleButton">Click Me</button>
+
+    <script>
+        let isChanging = true;
+        let clickCount = 0;
+
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 100);
+        }
+
+        function updateNumber() {
+            if (isChanging) {
+                document.getElementById('randomNumber').innerText = getRandomNumber();
+            }
+        }
+
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            clickCount++;
+            isChanging = clickCount % 2 === 0;
+        });
+
+        setInterval(updateNumber, 1000);
+    </script>
+</body>
+</html>
